@@ -15,5 +15,6 @@ This project is part of the interview process for DLA at GD-MS. It is required t
 * The first few lines of `Makefile` was updated to reflect TX2 hardware configuration.
 * In the demo repo, a webcam was used, but it is requred to only use hardware available on the Jetson, so more digging was required.
 * As the darknet repo was explored, it was noticed that there was a yolov3 was available. The instructions for that setup is **[https://jkjung-avt.github.io/yolov3/](https://jkjung-avt.github.io/yolov3/)** 
-* Opencv 3.3.1 came with Jetpack, but version 3.4.* is required for gstreamer functionality. Install instructions are here **[https://jkjung-avt.github.io/opencv-on-nano/](https://jkjung-avt.github.io/opencv-on-nano/)** 
+* Opencv 3.3.1 came with Jetpack, but version 3.4.* is required for gstreamer functionality. Install instructions are here **[https://jkjung-avt.github.io/opencv-on-nano/](https://jkjung-avt.github.io/opencv-on-nano/)**
+* To download a Youtube video to test the vision, 4K was used **[https://www.4kdownload.com/download](https://www.4kdownload.com/download)
 
