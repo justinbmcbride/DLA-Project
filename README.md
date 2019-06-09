@@ -111,9 +111,9 @@ layer     filters    size              input                output
    64 Killed
 learner@dla-tx2-004:~/Documents/DLA-Project-master/yolov3$ 
 ```
-* With further exploration, a yolov3-tiny model was discovered in the repo and 
+* With further exploration, a yolov3-tiny model was discovered in the repo and was ran: 
 
- `$./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3.weights traffic.mkv`
+ `$./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3.weights traffic1.mp4`
 * However, no object boxes were displayed and no identifications were made.
 `
 
