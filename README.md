@@ -144,5 +144,5 @@ Loading weights from yolov3.weights...Done!
 video file: traffic1.mp4
 ```
 * However, no object boxes were displayed and no identifications were made.
-`
+![Screenshot](Images/Screenshot-tiny-no-id.png)
 
