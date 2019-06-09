@@ -16,7 +16,19 @@ This project is part of the interview process for DLA at GD-MS. It is required t
 * In the demo repo, a webcam was used, but it is requred by DLA to only use hardware available on the Jetson, so more digging was required.
 * As the darknet repo was explored, it was noticed that there was a yolov3 was available. The instructions for that setup is **[https://jkjung-avt.github.io/yolov3/](https://jkjung-avt.github.io/yolov3/)** 
 * Opencv 3.3.1 came with Jetpack, but version 3.4.* is required for gstreamer functionality. Install instructions are here **[https://jkjung-avt.github.io/opencv-on-nano/](https://jkjung-avt.github.io/opencv-on-nano/)**
-* The `Makefile` script was modified from
+* The specify the Jetson hardware setup, the `Makefile` script was modified from
+```
+GPU=0
+CUDNN=0
+OPENCV=0
+
+ARCH= -gencode arch=compute_30,code=sm_30 \
+      -gencode arch=compute_35,code=sm_35 \
+      -gencode arch=compute_50,code=[sm_50,compute_50] \
+      -gencode arch=compute_52,code=[sm_52,compute_52]
+```
+to this
+
 ```
 GPU=1
 CUDNN=1
