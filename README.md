@@ -148,6 +148,6 @@ video file: traffic1.mp4
 * After reviewing the yolov2 tiny model implementation, it became apparent that the full model weights cannot be used, so the yolov3 tiny weights were dowloaded with the command `wget https://pjreddie.com/media/files/yolov3-tiny.weights`.
 * Then the command `./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tiny.weights traffic1.mp4` was executed and it worked. Objects were identified in the video as shown in this screen shot:
 ![Screenshot](Images/Traffic-id.png)
-* In the above screenshot, the probilities for the object identification range from 0.52 to 0.77 with 14.9 fps.
+* In the above screenshot, the probabilities for the object identification range from 0.52 to 0.77 with 14.9 fps.
 
 
