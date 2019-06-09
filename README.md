@@ -19,5 +19,5 @@ This project is part of the interview process for DLA at GD-MS. It is required t
 * At first, full model did not work as it caused the system to crash. Then used this command to execute demo `$./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3.weights traffic.mkv`
 * However, no objects were identified. It may be that the *mkv format is not recognizable.
 * Download traffic video in mp4 format using `youtube-dl -f 18 https://www.youtube.com/watch?v=wqctLW0Hb_0&feature=youtu.be
-'
+`
 
