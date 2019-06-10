@@ -150,6 +150,7 @@ video file: traffic1.mp4
 ![Screenshot](Images/Traffic-id.png)
 * In the above screenshot, the probabilities for the object identification range from 0.52 to 0.77 with 14.9 fps.
 * Another video was downloaded, `youtube-dl -f 18 https://www.youtube.com/watch?v=NyLF8nHIquM`, to test the object detector.
+* To get demo down to 2 minutes, tried to install a video editor to cut videos down to 1 minute each and then combine them. Three different ways to install a avidemux was tried, but none worked. The ways were with using tar.gz, appimage, and Flatpak.
 
 
 
