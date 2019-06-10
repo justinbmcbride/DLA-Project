@@ -149,7 +149,8 @@ video file: traffic1.mp4
 * Then the command `./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tiny.weights traffic1.mp4` was executed and it worked. Objects were identified in the video as shown in this screen shot:
 ![Screenshot](Images/Traffic-id.png)
 * In the above screenshot, the probabilities for the object identification range from 0.52 to 0.77 with 14.9 fps.
-* Another video was downloaded, `youtube-dl -f 18 https://www.youtube.com/watch?v=NyLF8nHIquM`, to test the object detector.
+* Another video was downloaded, `youtube-dl -f 18 https://www.youtube.com/watch?v=NyLF8nHIquM`, to test the object detector. Other objects were identified as shown in this screen shot:
+![Screenshot](Images/LondonWalk.png)
 * To get demo down to 2 minutes, tried to install a video editor to cut videos down to 1 minute each and then combine them. Three different ways to install a avidemux was tried, but none worked. The ways were with using tar.gz, appimage, and Flatpak.
 
 
