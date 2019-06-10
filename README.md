@@ -38,7 +38,7 @@ ARCH= -gencode arch=compute_53,code=[sm_53,compute_53] \
 -gencode arch=compute_62,code=[sm_62,compute_62]
 ```
 * A traffic video for object identification was downloaded in 720p in mp4 format using this command : `youtube-dl -f 18 https://www.youtube.com/watch?v=wqctLW0Hb_0&feature=youtu.be`
-`
+
 * On the first run, the hardware/software setup could not run with the weights from the full model. See output below:
 ```
 learner@dla-tx2-004:~/Documents/DLA-Project-master/yolov3$ ./darknet detector demo cfg/coco.data cfg/yolov3.cfg yolov3.weights traffic1.mp4
