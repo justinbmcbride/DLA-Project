@@ -9,6 +9,20 @@ This project is part of the interview process for DLA at GD-MS. It is required t
 * Configure hardware and software
 * Test configuration on how accurate it can identify common objects
 
+#### Shipped Hardware and Software
+* NVIDIA Jetson TX2 Developer kit
+  * 256-core NVIDIA Pascal GPU
+  * ARMv8 64-bit CPU complex
+    * Dual-core NVIDIA Denver 2
+    * Quad-core ARM Cortex-A57
+  * 8GB 128-bit LPDDR4
+  * 5MP CSI camera module (with Omnivision OV5693)
+* Jetpack 4.2 
+  * LTS Kernel 4.9
+  * Jetson.GPIO Python library
+  * Opencv 3.3.1
+  * Gstreamer 1.0
+
 #### Results
 * In surveying the web, instructions for running the TX2 using yolov2 (you only look once) darknet was found **[here](https://jkjung-avt.github.io/yolov2/)**.
 * The repository with the yolov2 pretrained weights were downloaded from **[https://github.com/pjreddie/darknet](https://github.com/pjreddie/darknet).**
@@ -153,7 +167,7 @@ video file: traffic1.mp4
 ![Screenshot](Images/LondonWalk.png)
 * Here people and traffic lights are detected with probabilites from 0.56 to 0.97.
 * To get demo down to 2 minutes, tried to install a video editor to cut videos down to 1 minute each and then combine them. Three different ways to install a avidemux was tried, but none worked. The ways were with using tar.gz, appimage, and Flatpak.
-* Instead of editing the videos, the `timeout` command was used in a script to run each video for 1m. Demo is now 2m when a terminal window is opened and the command `demoJM` is executed.
-
+* Instead of editing the videos, the `timeout` command was used in a script to run each video for less than 1m. Demo is now  leass than 2m when a terminal window is opened and the command `JustinDemo` is executed.
+* When `gst-launch-1.0 nvcamerasrc ! 'video/x-raw(memory:NVMM),width=640, height=480, framerate=30/1, format=NV12' ! nvvidconv flip-method=2 ! nvegltransform ! nveglglessink -e` is executed to try to open camera capture window, get error `WARNING: erroneous pipeline: no element "nvcamerasrc"`
 
 
