@@ -168,6 +168,9 @@ video file: traffic1.mp4
 * Here people and traffic lights are detected with probabilites from 0.56 to 0.97.
 * To get demo down to 2 minutes, tried to install a video editor to cut videos down to 1 minute each and then combine them. Three different ways to install a avidemux was tried, but none worked. The ways were with using tar.gz, appimage, and Flatpak.
 * Instead of editing the videos, the `timeout` command was used in a script to run each video for less than 1m. Demo is now  leass than 2m when a terminal window is opened and the command `JustinDemo` is executed.
-* When `gst-launch-1.0 nvcamerasrc ! 'video/x-raw(memory:NVMM),width=640, height=480, framerate=30/1, format=NV12' ! nvvidconv flip-method=2 ! nvegltransform ! nveglglessink -e` is executed to try to open camera capture window, get error `WARNING: erroneous pipeline: no element "nvcamerasrc"`
+* To open a camera capture window, the command `gst-launch-1.0 nvcamerasrc ! 'video/x-raw(memory:NVMM),width=640, height=480, framerate=30/1, format=NV12' ! nvvidconv flip-method=2 ! nvegltransform ! nveglglessink -e` should work according to several websites. But when it is executed to try to open camera capture window, get error `WARNING: erroneous pipeline: no element "nvcamerasrc"`
+* Upon further research, `nvcamerasrc` is deprecated and `gst-launch-1.0 nvarguscamerasrc ! nvvidconv ! xvimagesink` was used succesfully.
+* With this information, to use the camera for object detection, this command was tried `sudo  ./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tiny.weights "nvarguscamerasrc  ! video/x-raw(memory:NVMM), width=(int)640, height=(int)360,format=(string)I420, framerate=(fraction)30/1 ! nvvidconv flip-method=0 ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink"`
+* `sudo  ./darknet detector demo cfg/coco.data cfg/yolov3.cfg yolov3.weights "nvcamerasrc ! video/x-raw(memory:NVMM), width=(int)640, height=(int)360,format=(string)I420, framerate=(fraction)30/1 ! nvvidconv flip-method=0 ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink"`
 
 
