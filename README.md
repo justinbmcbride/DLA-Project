@@ -1,17 +1,21 @@
 # DLA-Project
 #### Objective
-This project is part of the interview process for DLA at GD-MS. It is required to be done on the NVIDIA Jetson TX2 developer kit and shipped back to DLA within two weeks of receipt (ship back by 6/21/19). The objective of my project is to run a small YOLO (you only look once) model on the kit and identify objects through the camera.
+This project is part of the interview process for DLA at GD-MS. It is required to be done on the NVIDIA Jetson TX2 developer kit and shipped back to DLA within two weeks of receipt (ship back by 6/21/19). The objective of my project is to run a small YOLO (you only look once) model on the kit and identify objects in a two videos and through the onboard camera.
+
+#### Run Demo
+* To run the demo, open a terminal and type `JustinDemo` and demo will complete in < 2 minutes.
+* It will identify objects in a traffic video for about 20 seconds, a city walking video for about 40 seconds, and the onboard camera for about 60 seconds. While the camera is on, the user can point it at objects, such as keyboards and monitors, for identification.  
 
 #### Procedure
 * Survey literature and the web for code already written and models already for small scale YOLO
 * Clone repositories
 * Install necessary software
 * Configure hardware and software
-* Test configuration on how accurate it can identify common objects
+* Run demo to identify objects
 
 #### Shipped Hardware and Software
 * NVIDIA Jetson TX2 Developer kit
-  * 256-core NVIDIA Pascal GPU
+  * 256-core NVIDIA Pascal (Tegra) GPU
   * ARMv8 64-bit CPU complex
     * Dual-core NVIDIA Denver 2
     * Quad-core ARM Cortex-A57
@@ -22,6 +26,7 @@ This project is part of the interview process for DLA at GD-MS. It is required t
   * Jetson.GPIO Python library
   * Opencv 3.3.1
   * Gstreamer 1.0
+![Screenshot](Images/Jetson_Setup.png)  
 
 #### Results
 * In surveying the web, instructions for running the TX2 using yolov2 (you only look once) darknet was found **[here](https://jkjung-avt.github.io/yolov2/)**.
@@ -68,56 +73,7 @@ layer     filters    size              input                output
     6 conv     64  1 x 1 / 1   152 x 152 x 128   ->   152 x 152 x  64  0.379 BFLOPs
     7 conv    128  3 x 3 / 1   152 x 152 x  64   ->   152 x 152 x 128  3.407 BFLOPs
     8 res    5                 152 x 152 x 128   ->   152 x 152 x 128
-    9 conv     64  1 x 1 / 1   152 x 152 x 128   ->   152 x 152 x  64  0.379 BFLOPs
-   10 conv    128  3 x 3 / 1   152 x 152 x  64   ->   152 x 152 x 128  3.407 BFLOPs
-   11 res    8                 152 x 152 x 128   ->   152 x 152 x 128
-   12 conv    256  3 x 3 / 2   152 x 152 x 128   ->    76 x  76 x 256  3.407 BFLOPs
-   13 conv    128  1 x 1 / 1    76 x  76 x 256   ->    76 x  76 x 128  0.379 BFLOPs
-   14 conv    256  3 x 3 / 1    76 x  76 x 128   ->    76 x  76 x 256  3.407 BFLOPs
-   15 res   12                  76 x  76 x 256   ->    76 x  76 x 256
-   16 conv    128  1 x 1 / 1    76 x  76 x 256   ->    76 x  76 x 128  0.379 BFLOPs
-   17 conv    256  3 x 3 / 1    76 x  76 x 128   ->    76 x  76 x 256  3.407 BFLOPs
-   18 res   15                  76 x  76 x 256   ->    76 x  76 x 256
-   19 conv    128  1 x 1 / 1    76 x  76 x 256   ->    76 x  76 x 128  0.379 BFLOPs
-   20 conv    256  3 x 3 / 1    76 x  76 x 128   ->    76 x  76 x 256  3.407 BFLOPs
-   21 res   18                  76 x  76 x 256   ->    76 x  76 x 256
-   22 conv    128  1 x 1 / 1    76 x  76 x 256   ->    76 x  76 x 128  0.379 BFLOPs
-   23 conv    256  3 x 3 / 1    76 x  76 x 128   ->    76 x  76 x 256  3.407 BFLOPs
-   24 res   21                  76 x  76 x 256   ->    76 x  76 x 256
-   25 conv    128  1 x 1 / 1    76 x  76 x 256   ->    76 x  76 x 128  0.379 BFLOPs
-   26 conv    256  3 x 3 / 1    76 x  76 x 128   ->    76 x  76 x 256  3.407 BFLOPs
-   27 res   24                  76 x  76 x 256   ->    76 x  76 x 256
-   28 conv    128  1 x 1 / 1    76 x  76 x 256   ->    76 x  76 x 128  0.379 BFLOPs
-   29 conv    256  3 x 3 / 1    76 x  76 x 128   ->    76 x  76 x 256  3.407 BFLOPs
-   30 res   27                  76 x  76 x 256   ->    76 x  76 x 256
-   31 conv    128  1 x 1 / 1    76 x  76 x 256   ->    76 x  76 x 128  0.379 BFLOPs
-   32 conv    256  3 x 3 / 1    76 x  76 x 128   ->    76 x  76 x 256  3.407 BFLOPs
-   33 res   30                  76 x  76 x 256   ->    76 x  76 x 256
-   34 conv    128  1 x 1 / 1    76 x  76 x 256   ->    76 x  76 x 128  0.379 BFLOPs
-   35 conv    256  3 x 3 / 1    76 x  76 x 128   ->    76 x  76 x 256  3.407 BFLOPs
-   36 res   33                  76 x  76 x 256   ->    76 x  76 x 256
-   37 conv    512  3 x 3 / 2    76 x  76 x 256   ->    38 x  38 x 512  3.407 BFLOPs
-   38 conv    256  1 x 1 / 1    38 x  38 x 512   ->    38 x  38 x 256  0.379 BFLOPs
-   39 conv    512  3 x 3 / 1    38 x  38 x 256   ->    38 x  38 x 512  3.407 BFLOPs
-   40 res   37                  38 x  38 x 512   ->    38 x  38 x 512
-   41 conv    256  1 x 1 / 1    38 x  38 x 512   ->    38 x  38 x 256  0.379 BFLOPs
-   42 conv    512  3 x 3 / 1    38 x  38 x 256   ->    38 x  38 x 512  3.407 BFLOPs
-   43 res   40                  38 x  38 x 512   ->    38 x  38 x 512
-   44 conv    256  1 x 1 / 1    38 x  38 x 512   ->    38 x  38 x 256  0.379 BFLOPs
-   45 conv    512  3 x 3 / 1    38 x  38 x 256   ->    38 x  38 x 512  3.407 BFLOPs
-   46 res   43                  38 x  38 x 512   ->    38 x  38 x 512
-   47 conv    256  1 x 1 / 1    38 x  38 x 512   ->    38 x  38 x 256  0.379 BFLOPs
-   48 conv    512  3 x 3 / 1    38 x  38 x 256   ->    38 x  38 x 512  3.407 BFLOPs
-   49 res   46                  38 x  38 x 512   ->    38 x  38 x 512
-   50 conv    256  1 x 1 / 1    38 x  38 x 512   ->    38 x  38 x 256  0.379 BFLOPs
-   51 conv    512  3 x 3 / 1    38 x  38 x 256   ->    38 x  38 x 512  3.407 BFLOPs
-   52 res   49                  38 x  38 x 512   ->    38 x  38 x 512
-   53 conv    256  1 x 1 / 1    38 x  38 x 512   ->    38 x  38 x 256  0.379 BFLOPs
-   54 conv    512  3 x 3 / 1    38 x  38 x 256   ->    38 x  38 x 512  3.407 BFLOPs
-   55 res   52                  38 x  38 x 512   ->    38 x  38 x 512
-   56 conv    256  1 x 1 / 1    38 x  38 x 512   ->    38 x  38 x 256  0.379 BFLOPs
-   57 conv    512  3 x 3 / 1    38 x  38 x 256   ->    38 x  38 x 512  3.407 BFLOPs
-   58 res   55                  38 x  38 x 512   ->    38 x  38 x 512
+....
    59 conv    256  1 x 1 / 1    38 x  38 x 512   ->    38 x  38 x 256  0.379 BFLOPs
    60 conv    512  3 x 3 / 1    38 x  38 x 256   ->    38 x  38 x 512  3.407 BFLOPs
    61 res   58                  38 x  38 x 512   ->    38 x  38 x 512
