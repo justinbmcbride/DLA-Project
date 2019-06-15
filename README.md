@@ -1,17 +1,21 @@
 # DLA-Project
 #### Objective
-This project is part of the interview process for DLA at GD-MS. It is required to be done on the NVIDIA Jetson TX2 developer kit and shipped back to DLA within two weeks of receipt (ship back by 6/21/19). The objective of my project is to run a small YOLO (you only look once) model on the kit and identify objects in a two videos and through the onboard camera.
+This project is part of the interview process for DLA at GD-MS. It is required to be done on the NVIDIA Jetson TX2 developer kit and shipped back to DLA within two weeks of receipt (ship back by 6/21/19). The objective of this project is to run a small model on the kit to identify objects.
 
 #### Run Demo
 * To run the demo, open a terminal and type `JustinDemo` and demo will complete in < 2 minutes.
 * It will identify objects in a traffic video for about 20 seconds, a city walking video for about 40 seconds, and the onboard camera for about 60 seconds. While the camera is on, the user can point it at objects, such as keyboards and monitors, for identification.  
 
 #### Procedure
+* Surveying the possibilites for object detection, it seems that yolov3 is a fast real-time object detector and has a model for systems with limited resources (yolov3-tiny). There are more accurate models, but yolov3 also has a small network for systems with limited 
 * Survey literature and the web for code already written and models already for small scale YOLO
+* yolov3 9000+classes, 106 layers
+* yolov3-tiny 80 classes
 * Clone repositories
 * Install necessary software
 * Configure hardware and software
 * Run demo to identify objects
+YOLO (you only look once) model on the kit and identify objects in a two videos and through the onboard camera.
 
 #### Shipped Hardware and Software
 * NVIDIA Jetson TX2 Developer kit
