@@ -126,7 +126,7 @@ layer     filters    size              input                output
    64 Killed
 learner@dla-tx2-004:~/Documents/DLA-Project-master/yolov3$ 
 ```
-* With further exploration, a yolov3-tiny model was discovered in the repo and was ran: `$./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3.weights traffic1.mp4` with this structure:
+* With further exploration, a yolov3-tiny model was discovered in the repo. Pre-trained weights downloaded with `wget https://pjreddie.com/media/files/yolov3-tiny.weights` and was ran with traffic video: `$./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3.weights traffic1.mp4` with this structure:
 ```
 learner@dla-tx2-004:~/Documents/DLA-Project-master/yolov3$ ./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3.weights traffic1.mp4
 Demo
