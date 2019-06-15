@@ -26,7 +26,7 @@ This project is part of the interview process for DLA at GD-MS. It is required t
   * Jetson.GPIO Python library
   * Opencv 3.3.1
   * Gstreamer 1.0
-![Screenshot](Images/Jetson_Setup.png)  
+![Screenshot](Images/Jetson_Setup.jpg)  
 
 #### Results
 * In surveying the web, instructions for running the TX2 using yolov2 (you only look once) darknet was found **[here](https://jkjung-avt.github.io/yolov2/)**.
