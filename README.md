@@ -28,6 +28,7 @@ This project is part of the interview process for DLA at GD-MS. It is required t
 * The repository with the yolov2 pretrained weights were downloaded from **[https://github.com/pjreddie/darknet](https://github.com/pjreddie/darknet).**
 * The first few lines of `Makefile` was updated to reflect TX2 hardware configuration.
 * In the demo repo, a webcam was used, but it is requred by DLA to only use hardware available on the Jetson, so more digging was required.
+* Download the pre-trained weights with `wget https://pjreddie.com/media/files/yolov3.weights`
 * As the darknet repo was explored, it was noticed that there was a yolov3 was available. The instructions for that setup is **[https://jkjung-avt.github.io/yolov3/](https://jkjung-avt.github.io/yolov3/)** 
 * Opencv 3.3.1 came with Jetpack, but version 3.4.* is required for gstreamer functionality. Install instructions are here **[https://jkjung-avt.github.io/opencv-on-nano/](https://jkjung-avt.github.io/opencv-on-nano/)**
 * The specify the Jetson hardware setup and apparently to use the GPU, the `Makefile` script was modified from
