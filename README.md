@@ -172,6 +172,6 @@ video file: traffic1.mp4
 * To open a camera capture window, the command `gst-launch-1.0 nvcamerasrc ! 'video/x-raw(memory:NVMM),width=640, height=480, framerate=30/1, format=NV12' ! nvvidconv flip-method=2 ! nvegltransform ! nveglglessink -e` should work according to several websites. But when it is executed to try to open camera capture window, get error `WARNING: erroneous pipeline: no element "nvcamerasrc"`
 * Upon further research, `nvcamerasrc` is deprecated and `gst-launch-1.0 nvarguscamerasrc ! nvvidconv ! xvimagesink` was used succesfully.
 * With this information, to use the camera for object detection, this command was tried `sudo ./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tiny.weights "nvarguscamerasrc ! video/x-raw(memory:NVMM), width=640, height=480, framerate=30/1, format=NV12' ! nvvidconv flip-method=0 ! nvegltransform ! nveglglessink -e ! appsink"` and to a picture and not a streaming video.
-* 
+* This command resulted in the live onboard camera feed that used yolo to identify objects: `./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tiny.weights "nvarguscamerasrc ! video/x-raw(memory:NVMM), width=(int)640, height=(int)480,format=(string)NV12, framerate=(fraction)24/1 ! nvvidconv flip-method=0 ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink"`
 
 
