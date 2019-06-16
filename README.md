@@ -134,6 +134,17 @@ video file: traffic1.mp4
 ./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tiny.weights "nvarguscamerasrc ! video/x-raw(memory:NVMM), width=(int)640, height=(int)480,format=(string)NV12, framerate=(fraction)24/1 ! nvvidconv flip-method=0 ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink"
 ```
 * To get the demo to be < 2min, this JustinDemo script was written:
+```
+#!/bin/bash
+# Object detection demo
+# Justin McBride
+# 6/14/19
+
+cd Documents/DLA/yolov3
+timeout 19s ./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tiny.weights traffic.mp4
+timeout 39s ./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tiny.weights LondonWalk.mp4
+timeout 59s ./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tiny.weights "nvarguscamerasrc ! video/x-raw(memory:NVMM), width=(int)640, height=(int)480,format=(string)NV12, framerate=(fraction)24/1 ! nvvidconv flip-method=0 ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink"
+```
 
 Instead of editing the videos, the `timeout` command was used in a script to run each video for less than 1m. Demo is now  less than 2m when a terminal window is opened and the command `JustinDemo` is executed.
 
