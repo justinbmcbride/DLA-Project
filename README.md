@@ -29,7 +29,7 @@ This project is part of the interview process for DLA (deep learning analytics) 
 ![Screenshot](Images/Jetson_Setup.jpg)  
 
 #### Results
-* Surveying the possibilites for object detection, it seems that YOLOv3 (you only look once)**[1](https://arxiv.org/pdf/1804.02767v1.pdf)** is a fast real-time object detector and also has a model for systems with limited resources (YOLOv3-tiny). It should be noted that there are more accurate models, but YOLOv3 is faster.
+* Surveying the possibilites for object detection, it seems that YOLOv3 (you only look once)**[[1]](https://arxiv.org/pdf/1804.02767v1.pdf)** is a fast real-time object detector and also has a model for systems with limited resources (YOLOv3-tiny). It should be noted that there are more accurate models, but YOLOv3 is faster.
 * From the paper, we see it is faster than other models, such as RetinaNet and SSD (single shot detection) on the COCO (common objects in context) database:
 
 ![Screenshot](Images/yolo_graph1.png) 
