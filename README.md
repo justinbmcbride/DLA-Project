@@ -34,7 +34,7 @@ This project is part of the interview process for DLA (deep learning analytics) 
 
 ![Screenshot](Images/yolo_graph1.png) 
 
-* YOLO is built on the Darknet, which is a neural network framework writtin in C and CUDA. The following procedure for installing Darknet and using YOLOv3 basically follows these steps **[https://pjreddie.com/darknet/](https://pjreddie.com/darknet/)**. This blog was also helpful: **[https://jkjung-avt.github.io/yolov3/](https://jkjung-avt.github.io/yolov3/)**.
+* YOLO is built on Darknet, which is a neural network framework writtin in C and CUDA. The following procedure for installing Darknet and using YOLOv3 basically follows these steps **[https://pjreddie.com/darknet/](https://pjreddie.com/darknet/)**. This blog was also helpful: **[https://jkjung-avt.github.io/yolov3/](https://jkjung-avt.github.io/yolov3/)**.
 * Download the pre-trained weights for YOLOv3 `wget https://pjreddie.com/media/files/yolov3.weights`.
 * Do the same for YOLOv3-tiny weights `wget https://pjreddie.com/media/files/yolov3-tiny.weights`.
 * Opencv 3.3.1 came with Jetpack 4.2, but Opencv version 3.4.* is required for gstreamer functionality. Install instructions are here **[https://jkjung-avt.github.io/opencv-on-nano/](https://jkjung-avt.github.io/opencv-on-nano/)**
