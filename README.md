@@ -36,7 +36,7 @@ This project is part of the interview process for DLA (deep learning analytics).
 ![Screenshot](Images/yolo_graph1.png)
 
 * The y-axis is COCO AP (average precision).
-* Instead of starting with a classifier and converting it into a real-time object detector using sliding boxes, YOLO takes in the whole image at once and divides it up into a grid. After that, it identifies bounding boxes, areas of the grid where an object might be. Then it classifies the bounding boxes with the highest probabilities of containing an object. The progression can be seen below, taken from **[https://pjreddie.com/darknet/yolov2/](https://pjreddie.com/darknet/yolov2/)**
+* Instead of starting with a classifier and converting it into a real-time object detector using sliding boxes, YOLO takes in the whole image at once and divides it up into a grid. After that, it identifies bounding boxes, areas of the grid where an object might be. Then it classifies the bounding boxes with the highest probability of containing an object. The progression can be seen below, taken from **[https://pjreddie.com/darknet/yolov2/](https://pjreddie.com/darknet/yolov2/)**
 
 ![Screenshot](Images/yolo_grid.png)
 
@@ -70,7 +70,7 @@ ARCH= -gencode arch=compute_53,code=[sm_53,compute_53] \
 -gencode arch=compute_62,code=[sm_62,compute_62]
 ```
 * Build the code with the `$ make` command at the terminal prompt.
-* `youtube-dl` was installed and a traffic video for object identification was downloaded from Youtube in in mp4 format using this command : `$ youtube-dl -f 18 https://www.youtube.com/watch?v=wqctLW0Hb_0&feature=youtu.be`
+* `youtube-dl` was installed and a traffic video for object identification was downloaded from Youtube in mp4 format using this command : `$ youtube-dl -f 18 https://www.youtube.com/watch?v=wqctLW0Hb_0&feature=youtu.be`
 
 * On the first run, the hardware/software setup could not run with the weights from the full model. See output below:
 ```
@@ -128,12 +128,12 @@ Loading weights from yolov3-tiny.weights...Done!
 video file: traffic1.mp4
 ```
 
-* Here is a screen shot from the video as objects were identified:
+* Here is a screenshot from the video as objects were identified:
 
 ![Screenshot](Images/traffic-id.png)
 
 * In the above screenshot, the probabilities for the object identification range from 0.52 to 0.77 with 14.9 fps.
-* Another video was downloaded, `$ youtube-dl -f 18 https://www.youtube.com/watch?v=NyLF8nHIquM`, to test the object detector. Other objects were identified as shown in this screen shot:
+* Another video was downloaded, `$ youtube-dl -f 18 https://www.youtube.com/watch?v=NyLF8nHIquM`, to test the object detector. Other objects were identified as shown in this screenshot:
 
 ![Screenshot](Images/LondonWalk.png)
 
@@ -161,7 +161,7 @@ timeout 59s ./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tin
 * To run the demo, open a terminal and at the prompt type `$ JustinDemo`.
 
 #### Summary
-This demo showed object detection on an embedded platform. I appreciated being loaned the developer kit and the opportunity to learn more about GitHub, Linux, and computer vision. One of my biggest contribution to the Jeton TX2 body of knowledge is figuring out the command to use the onboard camera with Jetpack 4.2 and YOLOv3. All the sites with the instructions are outdated, with the main command being deprecated. Computer vision is an ever expanding field and hope that I will get the opportunity to further my knowledge in this area and help DLA and its customers solve problems and save lives.
+This demo showed object detection on an embedded platform. I appreciated being loaned the developer kit and the opportunity to learn more about GitHub, Linux, and computer vision. One of my biggest contributions to the Jetson TX2 body of knowledge is figuring out the command to use the onboard camera with Jetpack 4.2 and YOLOv3. All the sites with the instructions are outdated, with the main command being deprecated. Computer vision is an ever expanding field and hope that I will get the opportunity to further my knowledge in this area and help DLA and its customers solve problems and save lives.
 
 #### Reference
 <a name="ref1">
