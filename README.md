@@ -163,6 +163,7 @@ timeout 59s ./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tin
 #### Summary
 This demo showed object detection on an embedded platform. I appreciated being loaned the developer kit and the opportunity to learn more about GitHub, Linux, and computer vision. It is an ever expanding field and hope that I will get the opportunity to further my knowledge in this area and help DLA and its customers solve problems and save lives.
 
+#### Reference
 <a name="ref1">
 [1] J. Redmon and A. Farhadi. Yolov3: An incremental improvement. arXiv, 2018.
 </a>
