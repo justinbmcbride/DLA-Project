@@ -1,9 +1,9 @@
 # DLA-Project
 #### Objective
-This project is part of the interview process for DLA (deep learning analytics) at GD-MS. It is required to be done on the NVIDIA Jetson TX2 developer kit and shipped back to DLA within two weeks of receipt (ship back by 6/21/19). Project choice is up to the applicant. For this one, the objective is to run a model on the kit to identify objects.
+This project is part of the interview process for DLA (deep learning analytics). It is required to be done on the NVIDIA Jetson TX2 developer kit and shipped back to DLA within two weeks of receipt (ship back by 6/21/19). Project choice is up to the applicant. For this one, the objective is to run a model on the kit to identify objects.
 
 #### Run Demo
-* To run the demo, open a terminal on the Jetson TX2 and type `JustinDemo` and it will complete in < 2 minutes.
+* To run the demo, open a terminal on the Jetson TX2 and type `$ JustinDemo` and it will complete in < 2 minutes.
 * It will identify objects in a traffic video for about 20 seconds, a city walking video for about 40 seconds, and the onboard camera for about 60 seconds. While the camera is on, the user can point it at objects, such as keyboards and monitors, for identification.  
 
 #### Procedure
@@ -26,6 +26,7 @@ This project is part of the interview process for DLA (deep learning analytics) 
   * Jetson.GPIO Python library
   * Opencv 3.3.1
   * Gstreamer 1.0
+  
 ![Screenshot](Images/Jetson_Setup.jpg)  
 
 #### Results
@@ -42,9 +43,9 @@ This project is part of the interview process for DLA (deep learning analytics) 
 * YOLO is built on Darknet, which is a neural network framework writtin in C and CUDA. The following procedure for installing Darknet and using YOLOv3 basically follows these steps **[https://pjreddie.com/darknet/](https://pjreddie.com/darknet/)**. This blog was also helpful: **[https://jkjung-avt.github.io/yolov3/](https://jkjung-avt.github.io/yolov3/)**.
 * Download the YOLOv3 model, weights, and tiny weights at the terminal prompt: 
 ```
-git clone https://github.com/pjreddie/darknet yolov3
-wget https://pjreddie.com/media/files/yolov3.weights
-wget https://pjreddie.com/media/files/yolov3-tiny.weights
+$ git clone https://github.com/pjreddie/darknet yolov3
+$ wget https://pjreddie.com/media/files/yolov3.weights
+$ wget https://pjreddie.com/media/files/yolov3-tiny.weights
 ```
 * Opencv 3.3.1 came with Jetpack 4.2, but Opencv version 3.4.* is required for Gstreamer functionality to use the onboard camera. Install instructions are here **[https://jkjung-avt.github.io/opencv-on-nano/](https://jkjung-avt.github.io/opencv-on-nano/)**
 * To specify the Jetson hardware setup and to use the GPU, the `Makefile` script was modified from
@@ -157,7 +158,11 @@ timeout 19s ./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tin
 timeout 39s ./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tiny.weights LondonWalk.mp4
 timeout 59s ./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tiny.weights "nvarguscamerasrc ! video/x-raw(memory:NVMM), width=(int)640, height=(int)480,format=(string)NV12, framerate=(fraction)24/1 ! nvvidconv flip-method=0 ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink"
 ```
-* To run the demo, open a terminal and at the prompt type `JustinDemo`.
+* To run the demo, open a terminal and at the prompt type `$ JustinDemo`.
+
+#### Summary
+This demo showed object detection on an embedded platform. I appreciated being loaned the developer kit and the opportunity to learn more about GitHub, Linux, and computer vision. It is an ever expanding field and hope that I will get the opportunity to further my knowledge in this area and help DLA and its customers solve problems and save lives.
+
 <a name="ref1">
 [1] J. Redmon and A. Farhadi. Yolov3: An incremental improvement. arXiv, 2018.
 </a>
