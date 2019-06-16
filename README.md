@@ -41,7 +41,7 @@ This project is part of the interview process for DLA (deep learning analytics).
 ![Screenshot](Images/yolo_grid.png)
 
 * YOLO is built on Darknet, which is a neural network framework writtin in C and CUDA. The following procedure for installing Darknet and using YOLOv3 basically follows these steps **[https://pjreddie.com/darknet/](https://pjreddie.com/darknet/)**. This blog was also helpful: **[https://jkjung-avt.github.io/yolov3/](https://jkjung-avt.github.io/yolov3/)**.
-* Download the YOLOv3 model, weights, and tiny weights at the terminal prompt: 
+* Download the YOLOv3 model, weights, and tiny weights: 
 ```
 $ git clone https://github.com/pjreddie/darknet yolov3
 $ wget https://pjreddie.com/media/files/yolov3.weights
