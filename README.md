@@ -3,7 +3,7 @@
 This project is part of the interview process for DLA at GD-MS. It is required to be done on the NVIDIA Jetson TX2 developer kit and shipped back to DLA within two weeks of receipt (ship back by 6/21/19). The objective of this project is to run a small model on the kit to identify objects.
 
 #### Run Demo
-* To run the demo, open a terminal and type `JustinDemo` and demo will complete in < 2 minutes.
+* To run the demo, open a terminal on the Jetson TX2 and type `JustinDemo` and it will complete in < 2 minutes.
 * It will identify objects in a traffic video for about 20 seconds, a city walking video for about 40 seconds, and the onboard camera for about 60 seconds. While the camera is on, the user can point it at objects, such as keyboards and monitors, for identification.  
 
 #### Procedure
@@ -33,9 +33,6 @@ This project is part of the interview process for DLA at GD-MS. It is required t
 * From the YOLOv3 paper, we see it is faster than other models, such as RetinaNet and SSD (single shot detection) on the COCO (common objects in context) database:
 
 ![Screenshot](Images/yolo_graph1.png) 
-
-* yolov3 9000+classes, 106 layers
-* yolov3-tiny 80 classes, 23 layers
 
 * YOLO is built on the Darknet, which is a neural network framework writtin in C and CUDA. The following procedure for installing Darknet and using YOLOv3 basically follows these steps **[https://pjreddie.com/darknet/](https://pjreddie.com/darknet/)**. This blog was also helpful: **[https://jkjung-avt.github.io/yolov3/](https://jkjung-avt.github.io/yolov3/).
 * In the demo repo, a webcam was used, but it is requred by DLA to only use hardware available on the Jetson, so more digging was required.
@@ -123,13 +120,17 @@ video file: traffic1.mp4
 ```
 
 * Here is a screen shot from the video as objects were identified:
+
 ![Screenshot](Images/Traffic-id.png)
+
 * In the above screenshot, the probabilities for the object identification range from 0.52 to 0.77 with 14.9 fps.
 * Another video was downloaded, `youtube-dl -f 18 https://www.youtube.com/watch?v=NyLF8nHIquM`, to test the object detector. Other objects were identified as shown in this screen shot:
+
 ![Screenshot](Images/LondonWalk.png)
+
 * Here people and traffic lights are detected with probabilites from 0.56 to 0.97.
-* To get demo down to 2 minutes, tried to install a video editor to cut videos down to 1 minute each and then combine them. Three different ways to install a avidemux was tried, but none worked. The ways were with using tar.gz, appimage, and Flatpak.
 * Instead of editing the videos, the `timeout` command was used in a script to run each video for less than 1m. Demo is now  leass than 2m when a terminal window is opened and the command `JustinDemo` is executed.
+* Getting the on board camera to work was not straight forward with 
 * To open a camera capture window, the command `gst-launch-1.0 nvcamerasrc ! 'video/x-raw(memory:NVMM),width=640, height=480, framerate=30/1, format=NV12' ! nvvidconv flip-method=2 ! nvegltransform ! nveglglessink -e` should work according to several websites. But when it is executed to try to open camera capture window, get error `WARNING: erroneous pipeline: no element "nvcamerasrc"`
 * Upon further research, `nvcamerasrc` is deprecated and `gst-launch-1.0 nvarguscamerasrc ! nvvidconv ! xvimagesink` was used succesfully.
 * With this information, to use the camera for object detection, this command was tried `sudo ./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tiny.weights "nvarguscamerasrc ! video/x-raw(memory:NVMM), width=640, height=480, framerate=30/1, format=NV12' ! nvvidconv flip-method=0 ! nvegltransform ! nveglglessink -e ! appsink"` and to a picture and not a streaming video.
