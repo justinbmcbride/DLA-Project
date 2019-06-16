@@ -7,19 +7,13 @@ This project is part of the interview process for DLA at GD-MS. It is required t
 * It will identify objects in a traffic video for about 20 seconds, a city walking video for about 40 seconds, and the onboard camera for about 60 seconds. While the camera is on, the user can point it at objects, such as keyboards and monitors, for identification.  
 
 #### Procedure
-* Surveying the possibilites for object detection, it seems that YOLOv3 (you only look once)**[1](https://arxiv.org/pdf/1804.02767v1.pdf)** is a fast real-time object detector and also has a model for systems with limited resources YOLOv3-tiny). It should be noted that there are more accurate models, but yolov3 is faster.
-* From the YOLOv3 paper, we see it is faster than other models, such as RetinaNet and SSD (single shot detection)
-![Screenshot](Images/yolo_graph1.png)  
-* Survey literature and the web for code already written and models already for small scale YOLO
-* yolov3 9000+classes, 106 layers
-* yolov3-tiny 80 classes
+* Survey literature and other sources on the web
 * Clone repositories
 * Install necessary software
 * Configure hardware and software
-* Run demo to identify objects
-YOLO (you only look once) model on the kit and identify objects in a two videos and through the onboard camera.
+* Run demo to identify objects in two videos and using the onboard camera
 
-#### Shipped Hardware and Software
+#### Received Hardware and Software
 * NVIDIA Jetson TX2 Developer kit
   * 256-core NVIDIA Pascal (Tegra) GPU
   * ARMv8 64-bit CPU complex
@@ -35,6 +29,13 @@ YOLO (you only look once) model on the kit and identify objects in a two videos 
 ![Screenshot](Images/Jetson_Setup.jpg)  
 
 #### Results
+* Surveying the possibilites for object detection, it seems that YOLOv3 (you only look once)**[1](https://arxiv.org/pdf/1804.02767v1.pdf)** is a fast real-time object detector and also has a model for systems with limited resources (YOLOv3-tiny). It should be noted that there are more accurate models, but yolov3 is faster.
+* From the YOLOv3 paper, we see it is faster than other models, such as RetinaNet and SSD (single shot detection) on the COCO (common objects in context) database:
+
+![Screenshot](Images/yolo_graph1.png) 
+
+* yolov3 9000+classes, 106 layers
+* yolov3-tiny 80 classes
 * In surveying the web, instructions for running the TX2 using yolov2 (you only look once) darknet was found **[here](https://jkjung-avt.github.io/yolov2/)**.
 * The repository with the yolov2 pretrained weights were downloaded from **[https://github.com/pjreddie/darknet](https://github.com/pjreddie/darknet).**
 * The first few lines of `Makefile` was updated to reflect TX2 hardware configuration.
