@@ -38,7 +38,7 @@ This project is part of the interview process for DLA (deep learning analytics) 
 * Download the pre-trained weights for YOLOv3 `wget https://pjreddie.com/media/files/yolov3.weights`.
 * Do the same for YOLOv3-tiny weights `wget https://pjreddie.com/media/files/yolov3-tiny.weights`.
 * Opencv 3.3.1 came with Jetpack 4.2, but Opencv version 3.4.* is required for gstreamer functionality. Install instructions are here **[https://jkjung-avt.github.io/opencv-on-nano/](https://jkjung-avt.github.io/opencv-on-nano/)**
-* Download the YOLO modle: `git clone https://github.com/pjreddie/darknet yolov3`.
+* Download the YOLO model: `git clone https://github.com/pjreddie/darknet yolov3`.
 * To specify the Jetson hardware setup and to use the GPU, the `Makefile` script was modified from
 ```
 GPU=0
@@ -135,7 +135,7 @@ video file: traffic1.mp4
 ```
 * Here is a screenshot of the onboard camera detecting objects:
 
-![Screenshot](Images/Screenshot_live.png)
+![Screenshot](Images/Screenshot_Live.png)
 
 * To get the demo to be < 2min, this JustinDemo script was written and stored in the bin directory:
 ```
