@@ -30,9 +30,18 @@ This project is part of the interview process for DLA (deep learning analytics) 
 
 #### Results
 * Surveying the possibilites for object detection, it seems that YOLOv3 (you only look once)**[[1]](https://arxiv.org/pdf/1804.02767v1.pdf)** is a fast real-time object detector and also has a model for systems with limited resources (YOLOv3-tiny). It should be noted that there are more accurate models, but YOLOv3 is faster.
+
+* Surveying the possibilites for object detection, it seems that YOLOv3 (you only look once)**[[1]](#[1]-j.-redmon-and-a.-farhadi.-yolov3:-an-incremental-improvement.-arxiv,-2018.)** is a fast real-time object detector and also has a model for systems with limited resources (YOLOv3-tiny). It should be noted that there are more accurate models, but YOLOv3 is faster.
+
+* Surveying the possibilites for object detection, it seems that YOLOv3 (you only look once)**[[1]](#ref1)** is a fast real-time object detector and also has a model for systems with limited resources (YOLOv3-tiny). It should be noted that there are more accurate models, but YOLOv3 is faster.
+
 * From the YOLOv3 paper, we see it is faster than other models, such as RetinaNet and SSD (single shot detection) on the COCO (common objects in context) database:
 
 ![Screenshot](Images/yolo_graph1.png) 
+
+* Instead of starting with a classifier and converting it into a real-time object detector using sliding boxes, YOLO takes in the whole image at once and divides it up into a grid. After that, it identifies bounding boxes, areas of the grid where an object might be. Then it classifies the bounding boxes with the highest probabilities of containing an object. The progression can be seen below, taken from **[https://pjreddie.com/darknet/yolov2/](https://pjreddie.com/darknet/yolov2/)**
+
+![Screenshot](Images/yolo_grid.png)
 
 * YOLO is built on Darknet, which is a neural network framework writtin in C and CUDA. The following procedure for installing Darknet and using YOLOv3 basically follows these steps **[https://pjreddie.com/darknet/](https://pjreddie.com/darknet/)**. This blog was also helpful: **[https://jkjung-avt.github.io/yolov3/](https://jkjung-avt.github.io/yolov3/)**.
 * Download the pre-trained weights for YOLOv3 `wget https://pjreddie.com/media/files/yolov3.weights`.
@@ -121,7 +130,7 @@ video file: traffic1.mp4
 
 * Here is a screen shot from the video as objects were identified:
 
-![Screenshot](Images/Traffic-id.png)
+![Screenshot](Images/traffic-id.png)
 
 * In the above screenshot, the probabilities for the object identification range from 0.52 to 0.77 with 14.9 fps.
 * Another video was downloaded, `youtube-dl -f 18 https://www.youtube.com/watch?v=NyLF8nHIquM`, to test the object detector. Other objects were identified as shown in this screen shot:
@@ -150,6 +159,13 @@ timeout 39s ./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tin
 timeout 59s ./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tiny.weights "nvarguscamerasrc ! video/x-raw(memory:NVMM), width=(int)640, height=(int)480,format=(string)NV12, framerate=(fraction)24/1 ! nvvidconv flip-method=0 ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink"
 ```
 * To run the demo, open a terminal and at the prompt type `JustinDemo`.
+
+[[1]] J. Redmon and A. Farhadi. Yolov3: An incremental improvement. arXiv, 2018.
+
+<a name="ref1">
+[[1]] J. Redmon and A. Farhadi. Yolov3: An incremental improvement. arXiv, 2018.
+</a>
+
 
 
 
