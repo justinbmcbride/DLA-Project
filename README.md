@@ -35,15 +35,15 @@ This project is part of the interview process for DLA at GD-MS. It is required t
 ![Screenshot](Images/yolo_graph1.png) 
 
 * yolov3 9000+classes, 106 layers
-* yolov3-tiny 80 classes
-* In surveying the web, instructions for running the TX2 using yolov2 (you only look once) darknet was found **[here](https://jkjung-avt.github.io/yolov2/)**.
-* The repository with the yolov2 pretrained weights were downloaded from **[https://github.com/pjreddie/darknet](https://github.com/pjreddie/darknet).**
-* The first few lines of `Makefile` was updated to reflect TX2 hardware configuration.
+* yolov3-tiny 80 classes, 23 layers
+
+* YOLO is built on the Darknet, which is a neural network framework writtin in C and CUDA. The following procedure for installing Darknet and using YOLOv3 basically follows these steps **[https://pjreddie.com/darknet/](https://pjreddie.com/darknet/)**. This blog was also helpful: **[https://jkjung-avt.github.io/yolov3/](https://jkjung-avt.github.io/yolov3/).
 * In the demo repo, a webcam was used, but it is requred by DLA to only use hardware available on the Jetson, so more digging was required.
-* Download the pre-trained weights with `wget https://pjreddie.com/media/files/yolov3.weights`
-* As the darknet repo was explored, it was noticed that there was a yolov3 was available. The instructions for that setup is **[https://jkjung-avt.github.io/yolov3/](https://jkjung-avt.github.io/yolov3/)** 
+* Download the pre-trained weights for YOLOv3 `wget https://pjreddie.com/media/files/yolov3.weights`.
+* Do the same for YOLOv3-tiny weights `wget https://pjreddie.com/media/files/yolov3-tiny.weights`.
 * Opencv 3.3.1 came with Jetpack, but version 3.4.* is required for gstreamer functionality. Install instructions are here **[https://jkjung-avt.github.io/opencv-on-nano/](https://jkjung-avt.github.io/opencv-on-nano/)**
-* The specify the Jetson hardware setup and apparently to use the GPU, the `Makefile` script was modified from
+* Download the YOLO modle: `git clone https://github.com/pjreddie/darknet yolov3`.
+* To specify the Jetson hardware setup and to use the GPU, the `Makefile` script was modified from
 ```
 GPU=0
 CUDNN=0
@@ -64,7 +64,7 @@ OPENCV=1
 ARCH= -gencode arch=compute_53,code=[sm_53,compute_53] \
 -gencode arch=compute_62,code=[sm_62,compute_62]
 ```
-* A traffic video for object identification was downloaded in 720p in mp4 format using this command : `youtube-dl -f 18 https://www.youtube.com/watch?v=wqctLW0Hb_0&feature=youtu.be`
+* A traffic video for object identification was downloaded from Youtube in in mp4 format using this command : `youtube-dl -f 18 https://www.youtube.com/watch?v=wqctLW0Hb_0&feature=youtu.be`
 
 * On the first run, the hardware/software setup could not run with the weights from the full model. See output below:
 ```
@@ -89,10 +89,10 @@ layer     filters    size              input                output
    64 Killed
 learner@dla-tx2-004:~/Documents/DLA-Project-master/yolov3$ 
 ```
-* With further exploration, a yolov3-tiny model was discovered in the repo. Pre-trained weights downloaded with `wget https://pjreddie.com/media/files/yolov3-tiny.weights` and was ran with traffic video: `$./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3.weights traffic1.mp4` with this structure:
+* There are 106 layers and can identify 9000+ classes. Jetson could not handle such a large model.
+* YOLOv3-tiny has 23 layers and can identify 80 classes.
+ The smaller model was run with the traffic video: `$./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tiny.weights traffic1.mp4` with this structure:
 ```
-learner@dla-tx2-004:~/Documents/DLA-Project-master/yolov3$ ./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3.weights traffic1.mp4
-Demo
 layer     filters    size              input                output
     0 conv     16  3 x 3 / 1   416 x 416 x   3   ->   416 x 416 x  16  0.150 BFLOPs
     1 max          2 x 2 / 2   416 x 416 x  16   ->   208 x 208 x  16
@@ -118,13 +118,11 @@ layer     filters    size              input                output
    21 conv    256  3 x 3 / 1    26 x  26 x 384   ->    26 x  26 x 256  1.196 BFLOPs
    22 conv    255  1 x 1 / 1    26 x  26 x 256   ->    26 x  26 x 255  0.088 BFLOPs
    23 yolo
-Loading weights from yolov3.weights...Done!
+Loading weights from yolov3-tiny.weights...Done!
 video file: traffic1.mp4
 ```
-* However, no object boxes were displayed and no identifications were made.
-![Screenshot](Images/Screenshot-tiny-no-id.png)
-* After reviewing the yolov2 tiny model implementation, it became apparent that the full model weights cannot be used, so the yolov3 tiny weights were dowloaded with the command `wget https://pjreddie.com/media/files/yolov3-tiny.weights`.
-* Then the command `./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tiny.weights traffic1.mp4` was executed and it worked. Objects were identified in the video as shown in this screen shot:
+
+* Here is a screen shot from the video as objects were identified:
 ![Screenshot](Images/Traffic-id.png)
 * In the above screenshot, the probabilities for the object identification range from 0.52 to 0.77 with 14.9 fps.
 * Another video was downloaded, `youtube-dl -f 18 https://www.youtube.com/watch?v=NyLF8nHIquM`, to test the object detector. Other objects were identified as shown in this screen shot:
