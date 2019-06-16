@@ -7,7 +7,9 @@ This project is part of the interview process for DLA at GD-MS. It is required t
 * It will identify objects in a traffic video for about 20 seconds, a city walking video for about 40 seconds, and the onboard camera for about 60 seconds. While the camera is on, the user can point it at objects, such as keyboards and monitors, for identification.  
 
 #### Procedure
-* Surveying the possibilites for object detection, it seems that yolov3 is a fast real-time object detector and has a model for systems with limited resources (yolov3-tiny). There are more accurate models, but yolov3 also has a small network for systems with limited 
+* Surveying the possibilites for object detection, it seems that YOLOv3 (you only look once)**[1](https://arxiv.org/pdf/1804.02767v1.pdf)** is a fast real-time object detector and also has a model for systems with limited resources YOLOv3-tiny). It should be noted that there are more accurate models, but yolov3 is faster.
+* From the YOLOv3 paper, we see it is faster than other models, such as RetinaNet and SSD (single shot detection)
+![Screenshot](Images/yolo_graph1.png)  
 * Survey literature and the web for code already written and models already for small scale YOLO
 * yolov3 9000+classes, 106 layers
 * yolov3-tiny 80 classes
