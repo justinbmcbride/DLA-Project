@@ -35,7 +35,7 @@ This project is part of the interview process for DLA (deep learning analytics).
 
 ![Screenshot](Images/yolo_graph1.png)
 
-* The y-axis is AP (average precision).
+* The y-axis is COCO AP (average precision).
 * Instead of starting with a classifier and converting it into a real-time object detector using sliding boxes, YOLO takes in the whole image at once and divides it up into a grid. After that, it identifies bounding boxes, areas of the grid where an object might be. Then it classifies the bounding boxes with the highest probabilities of containing an object. The progression can be seen below, taken from **[https://pjreddie.com/darknet/yolov2/](https://pjreddie.com/darknet/yolov2/)**
 
 ![Screenshot](Images/yolo_grid.png)
