@@ -29,16 +29,15 @@ This project is part of the interview process for DLA at GD-MS. It is required t
 ![Screenshot](Images/Jetson_Setup.jpg)  
 
 #### Results
-* Surveying the possibilites for object detection, it seems that YOLOv3 (you only look once)**[1](https://arxiv.org/pdf/1804.02767v1.pdf)** is a fast real-time object detector and also has a model for systems with limited resources (YOLOv3-tiny). It should be noted that there are more accurate models, but yolov3 is faster.
-* From the YOLOv3 paper, we see it is faster than other models, such as RetinaNet and SSD (single shot detection) on the COCO (common objects in context) database:
+* Surveying the possibilites for object detection, it seems that YOLOv3 (you only look once)**[1](https://arxiv.org/pdf/1804.02767v1.pdf)** is a fast real-time object detector and also has a model for systems with limited resources (YOLOv3-tiny). It should be noted that there are more accurate models, but YOLOv3 is faster.
+* From the paper, we see it is faster than other models, such as RetinaNet and SSD (single shot detection) on the COCO (common objects in context) database:
 
 ![Screenshot](Images/yolo_graph1.png) 
 
-* YOLO is built on the Darknet, which is a neural network framework writtin in C and CUDA. The following procedure for installing Darknet and using YOLOv3 basically follows these steps **[https://pjreddie.com/darknet/](https://pjreddie.com/darknet/)**. This blog was also helpful: **[https://jkjung-avt.github.io/yolov3/](https://jkjung-avt.github.io/yolov3/).
-* In the demo repo, a webcam was used, but it is requred by DLA to only use hardware available on the Jetson, so more digging was required.
+* YOLO is built on the Darknet, which is a neural network framework writtin in C and CUDA. The following procedure for installing Darknet and using YOLOv3 basically follows these steps **[https://pjreddie.com/darknet/](https://pjreddie.com/darknet/)**. This blog was also helpful: **[https://jkjung-avt.github.io/yolov3/](https://jkjung-avt.github.io/yolov3/)**.
 * Download the pre-trained weights for YOLOv3 `wget https://pjreddie.com/media/files/yolov3.weights`.
 * Do the same for YOLOv3-tiny weights `wget https://pjreddie.com/media/files/yolov3-tiny.weights`.
-* Opencv 3.3.1 came with Jetpack, but version 3.4.* is required for gstreamer functionality. Install instructions are here **[https://jkjung-avt.github.io/opencv-on-nano/](https://jkjung-avt.github.io/opencv-on-nano/)**
+* Opencv 3.3.1 came with Jetpack 4.2, but Opencv version 3.4.* is required for gstreamer functionality. Install instructions are here **[https://jkjung-avt.github.io/opencv-on-nano/](https://jkjung-avt.github.io/opencv-on-nano/)**
 * Download the YOLO modle: `git clone https://github.com/pjreddie/darknet yolov3`.
 * To specify the Jetson hardware setup and to use the GPU, the `Makefile` script was modified from
 ```
@@ -61,6 +60,7 @@ OPENCV=1
 ARCH= -gencode arch=compute_53,code=[sm_53,compute_53] \
 -gencode arch=compute_62,code=[sm_62,compute_62]
 ```
+* Build the code with the `make` command at the terminal prompt.
 * A traffic video for object identification was downloaded from Youtube in in mp4 format using this command : `youtube-dl -f 18 https://www.youtube.com/watch?v=wqctLW0Hb_0&feature=youtu.be`
 
 * On the first run, the hardware/software setup could not run with the weights from the full model. See output below:
@@ -137,7 +137,7 @@ video file: traffic1.mp4
 
 ![Screenshot](Images/Screenshot_live.png)
 
-* To get the demo to be < 2min, this JustinDemo script was written:
+* To get the demo to be < 2min, this JustinDemo script was written and stored in the bin directory:
 ```
 #!/bin/bash
 # Object detection demo
