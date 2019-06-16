@@ -1,6 +1,6 @@
 # DLA-Project
 #### Objective
-This project is part of the interview process for DLA at GD-MS. It is required to be done on the NVIDIA Jetson TX2 developer kit and shipped back to DLA within two weeks of receipt (ship back by 6/21/19). The objective of this project is to run a small model on the kit to identify objects.
+This project is part of the interview process for DLA (deep learning analytics) at GD-MS. It is required to be done on the NVIDIA Jetson TX2 developer kit and shipped back to DLA within two weeks of receipt (ship back by 6/21/19). Project choice is up to the applicant. For this one, the objective is to run a model on the kit to identify objects.
 
 #### Run Demo
 * To run the demo, open a terminal on the Jetson TX2 and type `JustinDemo` and it will complete in < 2 minutes.
