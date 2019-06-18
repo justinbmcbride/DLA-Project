@@ -1,17 +1,17 @@
 # DLA-Project
 #### Objective
-This project is part of the interview process for DLA (deep learning analytics). It is required to be done on the NVIDIA Jetson TX2 developer kit and shipped back to DLA within two weeks of receipt (ship back by 6/21/19). Project choice is up to the applicant. For this one, the objective is to run a model on the kit to identify objects.
+This project was part of the interview process for DLA (deep learning analytics). Project was completed on the NVIDIA Jetson TX2 developer kit within two weeks of receipt. The objective of the project was to identify objects in videos and to identify objects using the onboard camera.
 
 #### Run Demo
-* To run the demo, open a terminal on the Jetson TX2 and type `$ JustinDemo` and it will complete in < 2 minutes.
-* It will identify objects in a traffic video for about 20 seconds, a city walking video for about 40 seconds, and the onboard camera for about 60 seconds. While the camera is on, the user can point it at objects, such as keyboards and monitors, for identification.  
+* To run the demo, open a terminal window on the Jetson TX2 and type `$ JustinDemo`. Demo will complete in < 2 minutes.
+* During the demo, the kit will identify objects in two videos and a live feed from the onboard camera. A traffic video will run for about 20 seconds and identify cars and trucks. A pedestrian video will run for about 40 seconds and identify people, cars, and buses. The onboard camera will run for about 60 seconds. The user may point it at various common objects, such as keyboards and monitors, for identification. There are a total of 80 classes of objects that the model has been trained to identify.
 
 #### Procedure
 * Survey literature and other sources on the web
 * Clone repositories
 * Install necessary software
 * Configure hardware and software
-* Run demo to identify objects in two videos and using the onboard camera
+* Run demo to identify objects in two videos and with the onboard camera
 
 #### Received Hardware and Software
 * NVIDIA Jetson TX2 Developer kit
@@ -30,17 +30,17 @@ This project is part of the interview process for DLA (deep learning analytics).
 ![Screenshot](Images/Jetson_Setup.jpg)  
 
 #### Results
-* Surveying the possibilites for object detection, it seems that YOLOv3 (you only look once)**[[1]](#ref1)** is a fast real-time object detector and also has a model for systems with limited resources (YOLOv3-tiny). It should be noted that there are more accurate models, but YOLOv3 is faster.
+* Surveying the possibilites for object detection, it seems that YOLOv3 (you only look once)**[[1]](#ref1)** model is a fast real-time object detector and also has a smaller model for systems with limited resources (YOLOv3-tiny). Note that there are more accurate models, but the YOLOv3 model is faster.
 * From the YOLOv3 paper, we see it is faster than other models, such as RetinaNet and SSD (single shot detection) on the COCO (common objects in context) database:
 
 ![Screenshot](Images/yolo_graph1.png)
 
 * The y-axis is COCO AP (average precision).
-* Instead of starting with a classifier and converting it into a real-time object detector using sliding boxes, YOLO takes in the whole image at once and divides it up into a grid. After that, it identifies bounding boxes, areas of the grid where an object might be. Then it classifies the bounding boxes with the highest probability of containing an object. The progression can be seen below, taken from **[https://pjreddie.com/darknet/yolov2/](https://pjreddie.com/darknet/yolov2/)**
+* Instead of starting with a classifier and converting it into a real-time object detector using sliding boxes, YOLO takes in the whole image at once and divides it up into a grid. After that, it identifies bounding boxes and areas of the grid where an object might be. Then it classifies the bounding boxes with the highest probability of containing an object. The progression can be seen below, taken from **[https://pjreddie.com/darknet/yolov2/](https://pjreddie.com/darknet/yolov2/)**
 
 ![Screenshot](Images/yolo_grid.png)
 
-* YOLO is built on Darknet, which is a neural network framework writtin in C and CUDA. The following procedure for installing Darknet and using YOLOv3 basically follows these steps **[https://pjreddie.com/darknet/](https://pjreddie.com/darknet/)**. This blog was also helpful: **[https://jkjung-avt.github.io/yolov3/](https://jkjung-avt.github.io/yolov3/)**.
+* YOLO is built on Darknet, which is a neural network framework written in C and CUDA. The following procedure for installing Darknet and using YOLOv3 basically follows these steps **[https://pjreddie.com/darknet/](https://pjreddie.com/darknet/)**. This blog was also helpful: **[https://jkjung-avt.github.io/yolov3/](https://jkjung-avt.github.io/yolov3/)**.
 * Download the YOLOv3 model, weights, and tiny weights: 
 ```
 $ git clone https://github.com/pjreddie/darknet yolov3
@@ -95,9 +95,9 @@ layer     filters    size              input                output
    64 Killed
 learner@dla-tx2-004:~/Documents/DLA-Project-master/yolov3$ 
 ```
-* There are 106 layers and can identify 9000+ classes. Jetson could not handle such a large model.
+* There are 106 layers in the YOLOv3 full model and it can identify 9000+ classes of objects. Jetson could not handle such a large model.
 * YOLOv3-tiny has 23 layers and can identify 80 classes.
- The smaller model was run with the traffic video: `$ ./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tiny.weights traffic1.mp4` with this structure:
+ The smaller model ran with the traffic video: `$ ./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tiny.weights traffic1.mp4` with this structure:
 ```
 layer     filters    size              input                output
     0 conv     16  3 x 3 / 1   416 x 416 x   3   ->   416 x 416 x  16  0.150 BFLOPs
@@ -133,7 +133,7 @@ video file: traffic1.mp4
 ![Screenshot](Images/traffic-id.png)
 
 * In the above screenshot, the probabilities for the object identification range from 0.52 to 0.77 with 14.9 fps.
-* Another video was downloaded, `$ youtube-dl -f 18 https://www.youtube.com/watch?v=NyLF8nHIquM`, to test the object detector. Other objects were identified as shown in this screenshot:
+* Another video (`$ youtube-dl -f 18 https://www.youtube.com/watch?v=NyLF8nHIquM`) tested the object detector. It identified other objects were identified as shown in this screenshot:
 
 ![Screenshot](Images/LondonWalk.png)
 
