@@ -1,6 +1,6 @@
 # DLA-Project
 #### Objective
-This project was part of the interview process for DLA (deep learning analytics). Project was completed on the NVIDIA Jetson TX2 developer kit within two weeks of receipt. The objective of the project was to identify objects in videos and to identify objects using the onboard camera.
+This open-ended project was part of the interview process for DLA (deep learning analytics). Project was completed on the NVIDIA Jetson TX2 developer kit within two weeks of receipt. The objective I chose for the project was to identify objects in videos and to identify objects using the onboard camera.
 
 #### Run Demo
 * To run the demo, open a terminal window on the Jetson TX2 and type `$ JustinDemo`. Demo will complete in < 2 minutes.
