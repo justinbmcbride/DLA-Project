@@ -30,7 +30,7 @@ This project was part of the interview process for DLA (deep learning analytics)
 ![Screenshot](Images/Jetson_Setup.jpg)  
 
 #### Results
-* Surveying the possibilites for object detection, it seems that YOLOv3 (you only look once)**[[1]](#ref1)** model is a fast real-time object detector and also has a smaller model for systems with limited resources (YOLOv3-tiny). Note that there are more accurate models, but the YOLOv3 model is faster.
+* Surveying the possibilities for object detection, it seems that YOLOv3 (you only look once)**[[1]](#ref1)** model is a fast real-time object detector and also has a smaller model for systems with limited resources (YOLOv3-tiny). Note that there are more accurate models, but the YOLOv3 model is faster.
 * From the YOLOv3 paper, we see it is faster than other models, such as RetinaNet and SSD (single shot detection) on the COCO (common objects in context) database:
 
 ![Screenshot](Images/yolo_graph1.png)
@@ -137,7 +137,7 @@ video file: traffic1.mp4
 
 ![Screenshot](Images/LondonWalk.png)
 
-* In the screenshot above, people and traffic lights are detected with probabilites from 0.56 to 0.97.
+* In the screenshot above, people and traffic lights are detected with probabilities from 0.56 to 0.97.
 * Getting the onboard camera activated and identifying objects was not straightforward. After reading several sites and some trial and error, the correct command was found: 
 ```
 $ ./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tiny.weights "nvarguscamerasrc ! video/x-raw(memory:NVMM), width=(int)640, height=(int)480,format=(string)NV12, framerate=(fraction)24/1 ! nvvidconv flip-method=0 ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink"
