@@ -133,16 +133,16 @@ video file: traffic1.mp4
 ![Screenshot](Images/traffic-id.png)
 
 * In the above screenshot, the probabilities for the object identification range from 0.52 to 0.77 with 14.9 fps.
-* Another video (`$ youtube-dl -f 18 https://www.youtube.com/watch?v=NyLF8nHIquM`) tested the object detector. It identified other objects were identified as shown in this screenshot:
+* Another video (`$ youtube-dl -f 18 https://www.youtube.com/watch?v=NyLF8nHIquM`) tested the object detector. It identified other objects as shown in this screenshot:
 
 ![Screenshot](Images/LondonWalk.png)
 
-* Here people and traffic lights are detected with probabilites from 0.56 to 0.97.
+* In the screenshot above, people and traffic lights are detected with probabilites from 0.56 to 0.97.
 * Getting the onboard camera activated and identifying objects was not straightforward. After reading several sites and some trial and error, the correct command was found: 
 ```
 $ ./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tiny.weights "nvarguscamerasrc ! video/x-raw(memory:NVMM), width=(int)640, height=(int)480,format=(string)NV12, framerate=(fraction)24/1 ! nvvidconv flip-method=0 ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink"
 ```
-* Here is a screenshot of the onboard camera detecting objects:
+* Pictured below is a screenshot of the onboard camera detecting objects:
 
 ![Screenshot](Images/Screenshot_Live.png)
 
