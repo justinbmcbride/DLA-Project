@@ -161,7 +161,11 @@ timeout 59s ./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tin
 * To run the demo, open a terminal and at the prompt type `$ JustinDemo`.
 
 #### Summary
-This demo showed object detection on an embedded platform. I appreciated being loaned the developer kit and the opportunity to learn more about GitHub, Linux, and computer vision. One of my biggest contributions to the Jetson TX2 body of knowledge is figuring out the command to use the onboard camera with Jetpack 4.2 and YOLOv3. All the sites with the instructions are outdated, with the main command being deprecated. Computer vision is an ever expanding field and hope that I will get the opportunity to further my knowledge in this area and help DLA and its customers solve problems and save lives.
+The demo successfully completed the objective of identifying objects within given constraints. Some of the instructions were outdated and did not work with Jetpack 4.2. One of my main contributions was identifying the proper commands in the latest environment.
+
+If I were to work on this project further, I would translate the model into Python and attempt further improvements by tuning hyperparameters and possibly changing the model architecture.
+
+I appreciated the opportunity to work on this project and to learn more about GitHub, Linux, and computer vision. Deep learning is an ever expanding field and I hope to help DLA and its customers solve problems and protect the lives of those who serve our country.
 
 #### Reference
 <a name="ref1">
