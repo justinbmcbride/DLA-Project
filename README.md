@@ -161,7 +161,7 @@ timeout 59s ./darknet detector demo cfg/coco.data cfg/yolov3-tiny.cfg yolov3-tin
 * To run the demo, open a terminal and at the prompt type `$ JustinDemo`.
 
 #### Summary
-The demo successfully completed the objective of identifying objects within given constraints. Some of the instructions were outdated and did not work with Jetpack 4.2. One of my main contributions was identifying the proper commands in the latest environment.
+The demo successfully completed the objective of identifying objects within given constraints. Some of the information about using the kit for object detection was outdated and did not work with Jetpack 4.2. One of my main contributions was identifying the proper commands in the latest environment.
 
 If I were to work on this project further, I would translate the model into Python and attempt further improvements by tuning hyperparameters and possibly changing the model architecture.
 
